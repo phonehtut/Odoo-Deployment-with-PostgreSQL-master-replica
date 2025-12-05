@@ -9,7 +9,7 @@ data:
     db_host = postgres-master
     db_port = 5432
     db_user = odoo
-    db_name = hcm_testing
+    db_name = odoo_testing
     addons_path = /mnt/extra-addons
     admin_passwd = master
 
