@@ -1,0 +1,21 @@
+# Odoo image
+odoo:
+  replica: 2
+  image: odoo
+  tag: 18.0
+  serviceName: odoo-service
+
+# Domain for cert
+domain: yourdomain.com
+
+# PostgreSQL
+postgres:
+  user: odoo
+  password: <your-strong-password>
+  db: odoo
+  replicas: 1
+  storageSize: 50Gi
+
+# PVC for Odoo filestore
+odooPVC:
+  size: 20Gi

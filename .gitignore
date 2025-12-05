@@ -1,0 +1,8 @@
+.idea
+.vscode
+values.yaml
+do-space-secret.yaml
+cluster-issuer.yaml
+nginx-value.yaml
+templates/secerts.yaml
+Chart.yaml

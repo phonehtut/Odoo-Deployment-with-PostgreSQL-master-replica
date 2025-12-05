@@ -1,0 +1,29 @@
+{{- if .Values.odoo.vpa.enabled }}
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: odoo-vpa
+  namespace: {{ .Release.Namespace }}
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: {{ include "odoo.fullname" . }}
+
+  updatePolicy:
+    updateMode: {{ .Values.odoo.vpa.updateMode }}
+
+  resourcePolicy:
+    containerPolicies:
+      - containerName: odoo
+        minAllowed:
+          cpu: {{ .Values.odoo.vpa.minAllowed.cpu }}
+          memory: {{ .Values.odoo.vpa.minAllowed.memory }}
+        maxAllowed:
+          cpu: {{ .Values.odoo.vpa.maxAllowed.cpu }}
+          memory: {{ .Values.odoo.vpa.maxAllowed.memory }}
+        controlledResources:
+          - cpu
+          - memory
+
+{{- end }}
